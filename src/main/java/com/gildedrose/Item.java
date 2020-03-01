@@ -43,52 +43,60 @@ public class Item {
 
     public void updateQuality(){
         switch (name) {
-            case AGED_BRIE:
-                if (quality < QUALITY_HIGH) {
-                    quality = quality + 1;
-                }
-                sellIn = sellIn - 1;
-                if (sellIn < SELL_ZERO) {
-                    if (quality < QUALITY_HIGH) {
-                        quality = quality + 1;
-                    }
-                }
-                break;
-            case TAFKAL80ETC:
-                if (quality < QUALITY_HIGH) {
-                    quality = quality + 1;
-
-                    if (sellIn < SELL_ELEVEN) {
-                        if (quality < QUALITY_HIGH) {
-                            quality = quality + 1;
-                        }
-                    }
-
-                    if (sellIn < SELL_SIX) {
-                        if (quality < QUALITY_HIGH) {
-                            quality = quality + 1;
-                        }
-                    }
-                }
-                sellIn = sellIn - 1;
-                if (sellIn < SELL_ZERO) {
-                    quality = QUALITY_ZERO;
-                }
-                break;
             case SULFURAS:
                 break;
-            default:
-                if (quality > SELL_ZERO) {
-                    quality = quality - 1;
-                }
-                sellIn = sellIn - 1;
-                if (sellIn < SELL_ZERO) {
-                    if (quality > SELL_ZERO) {
-                        quality = quality - 1;
-                    }
-
-                }
+            case AGED_BRIE:
+                agedBrieUpgrade();
                 break;
+            case TAFKAL80ETC:
+                TafkalUpgrade();
+                break;
+            default:
+                defaultGoodUpgrade();
+                break;
+        }
+    }
+
+    private void defaultGoodUpgrade(){
+        qualitySubtractOne();
+        sellIn = sellIn - 1;
+        if (sellIn < SELL_ZERO) {
+            qualitySubtractOne();
+        }
+    }
+
+    private void TafkalUpgrade(){
+        sellIn = sellIn - 1;
+        if (sellIn < SELL_ZERO) {
+            quality = QUALITY_ZERO;
+        } else {
+            qualityPlusOne();
+            if (sellIn < SELL_ELEVEN) {
+                qualityPlusOne();
+            }
+            if (sellIn < SELL_SIX) {
+                qualityPlusOne();
+            }
+        }
+    }
+
+    private void agedBrieUpgrade(){
+        qualityPlusOne();
+        sellIn = sellIn - 1;
+        if (sellIn < SELL_ZERO) {
+            qualityPlusOne();
+        }
+    }
+
+    private void qualityPlusOne(){
+        if (quality < QUALITY_HIGH) {
+            quality++;
+        }
+    }
+
+    private void qualitySubtractOne(){
+        if (quality > QUALITY_ZERO) {
+            quality--;
         }
     }
 }
