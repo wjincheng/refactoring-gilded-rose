@@ -52,19 +52,15 @@ public class Item {
         }
 
         if (sell_in < 0) {
-            if (!name.equals("Aged Brie")) {
-                if (!name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                    if (quality > 0) {
-                        if (!name.equals("Sulfuras, Hand of Ragnaros")) {
-                            quality = quality - 1;
-                        }
-                    }
-                } else {
-                    quality = quality - quality;
-                }
-            } else {
+            if (name.equals("Aged Brie")) {
                 if (quality < 50) {
                     quality = quality + 1;
+                }
+            } else if (name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+                quality = 0;
+            } else {
+                if (quality > 0 && !name.equals("Sulfuras, Hand of Ragnaros")) {
+                    quality = quality - 1;
                 }
             }
         }
