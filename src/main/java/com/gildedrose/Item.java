@@ -8,11 +8,14 @@ public class Item {
 
     private int quality;
 
-    private static int QUALITY_HIGH = 50;
-    private static int QUALITY_ZERO = 0;
-    private static int SELL_ZERO = 0;
-    private static int SELL_SIX = 6;
-    private static int SELL_ELEVEN = 11;
+    private static final int QUALITY_HIGH = 50;
+    private static final int QUALITY_ZERO = 0;
+    private static final int SELL_ZERO = 0;
+    private static final int SELL_SIX = 6;
+    private static final int SELL_ELEVEN = 11;
+    private static final String AGED_BRIE = "Aged Brie";
+    private static final String TAFKAL80ETC = "Backstage passes to a TAFKAL80ETC concert";
+    private static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
 
 
     public Item(String name, int sellIn, int quality){
@@ -40,7 +43,7 @@ public class Item {
 
     public void update_quality(){
         switch (name) {
-            case "Aged Brie":
+            case AGED_BRIE:
                 if (quality < QUALITY_HIGH) {
                     quality = quality + 1;
                 }
@@ -51,7 +54,7 @@ public class Item {
                     }
                 }
                 break;
-            case "Backstage passes to a TAFKAL80ETC concert":
+            case TAFKAL80ETC:
                 if (quality < QUALITY_HIGH) {
                     quality = quality + 1;
 
@@ -72,7 +75,7 @@ public class Item {
                     quality = QUALITY_ZERO;
                 }
                 break;
-            case "Sulfuras, Hand of Ragnaros":
+            case SULFURAS:
                 break;
             default:
                 if (quality > SELL_ZERO) {
