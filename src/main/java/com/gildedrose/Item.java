@@ -41,7 +41,7 @@ public class Item {
         return this.name + ", " + this.sellIn + ", " + this.quality;
     }
 
-    public void update_quality(){
+    public void updateQuality(){
         switch (name) {
             case AGED_BRIE:
                 if (quality < QUALITY_HIGH) {
