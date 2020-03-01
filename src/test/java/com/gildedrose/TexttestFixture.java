@@ -1,7 +1,5 @@
 package com.gildedrose;
 
-import org.junit.Test;
-
 public class TexttestFixture {
     public static void main(String[] args) {
         System.out.println("OMGHAI!");
@@ -33,11 +31,8 @@ public class TexttestFixture {
                 System.out.println(item);
             }
             System.out.println();
-            app.update_quality();
+            app.updateQuality();
         }
     }
-
-//    @Test
-//    public sho
 
 }
