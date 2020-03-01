@@ -110,6 +110,26 @@ public class GildedRoseTest {
     }
 
     @Test
+    public void should_sell_minus_1_and_quality_plus_1_given_TAFKAL80ETC_and_sell_greater_than_6() {
+        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 7, 5) };
+        GildedRose app = new GildedRose(items);
+        app.update_quality();
+        assertEquals("Backstage passes to a TAFKAL80ETC concert", app.items[0].name);
+        assertThat(app.items[0].quality, is(7));
+        assertThat(app.items[0].sell_in, is(6));
+    }
+
+    @Test
+    public void should_sell_minus_1_and_quality_plus_1_given_TAFKAL80ETC_and_sell_greater_than_11() {
+        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 12, 5) };
+        GildedRose app = new GildedRose(items);
+        app.update_quality();
+        assertEquals("Backstage passes to a TAFKAL80ETC concert", app.items[0].name);
+        assertThat(app.items[0].quality, is(6));
+        assertThat(app.items[0].sell_in, is(11));
+    }
+
+    @Test
     public void should_sell_minus_1_and_quality_plus_1_given_TAFKAL80ETC_and_sell_less_than_0() {
         Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", -2, 6) };
         GildedRose app = new GildedRose(items);
